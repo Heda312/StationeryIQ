@@ -52,13 +52,17 @@ Wireframe chat UI (non-teknis, warna utama **biru muda**):
 ```
 .
 ├── backend/                        # FastAPI (skeleton)
-│   ├── main.py                     # endpoint: health, stok, kategori, chat (mock)
+│   ├── main.py                     # endpoint: health, stok, kategori, chat
+│   ├── db.py                       # akses Supabase (fallback mock)
 │   ├── test_api.py                 # cek cepat (pytest)
+│   ├── .env.example                # template env (salin -> .env)
+│   ├── pyproject.toml              # config ruff
 │   └── requirements.txt
 ├── frontend/                       # chat UI (skeleton, tanpa build step)
 │   ├── index.html
 │   ├── styles.css
 │   └── app.js
+├── .github/workflows/ci.yml        # CI: lint + test
 ├── docs/
 │   └── design/                     # Aset desain (wireframe, mock)
 ├── README.md
@@ -73,9 +77,16 @@ Backend:
 cd backend
 python -m venv .venv && .venv/Scripts/activate   # Windows; pakai bin/activate di Linux/macOS
 pip install -r requirements.txt
+cp .env.example .env                             # lalu isi SUPABASE_URL & SUPABASE_SECRET_KEY
 uvicorn main:app --reload                        # http://127.0.0.1:8000
 pytest                                           # cek cepat
 ```
+
+> Env Supabase **opsional**: bila kosong, API jatuh ke data mock (dipakai CI & dev
+> tanpa kredensial). `GET /health` melaporkan mode aktif (`supabase` / `mock`).
+> Kredensial hanya hidup di server; jangan pernah dikirim ke frontend/browser.
+> Schema tabel bisa berubah — baris dikirim apa adanya; nama tabel dapat diatur
+> lewat env `PRODUCTS_TABLE` (default `products`).
 
 Frontend (skeleton statis): buka `frontend/index.html` di browser, atau jalankan server statis:
 ```bash
