@@ -37,7 +37,7 @@ Target **M1**: skeleton backend/frontend berjalan, repo + CI/CD dasar, wireframe
 | TSK-FS-01 | Rafi | Berjalan | Setup repo GitHub, branching, environment, board tugas |
 | TSK-FS-02 | Rizki | Berjalan | Wireframe UI chat + skeleton FastAPI & frontend |
 
-### Desain
+### Desain — disetujui tim ✅
 
 Wireframe chat UI (non-teknis, warna utama **biru muda**):
 
@@ -64,6 +64,7 @@ Wireframe chat UI (non-teknis, warna utama **biru muda**):
 │   └── app.js
 ├── .github/workflows/ci.yml        # CI: lint + test
 ├── docs/
+│   ├── README.md                   # Ketergantungan antar peran
 │   └── design/                     # Aset desain (wireframe, mock)
 ├── README.md
 ├── ROLE_FULLSTACK_DEVELOPER.md     # Konteks role & task FSD
@@ -102,8 +103,15 @@ python -m http.server 5500
 - `GET /kategori` — daftar kategori
 - `POST /chat` — kirim pertanyaan, terima jawaban RAG
 
+## Alur Kerja Git
+
+- **Commit langsung ke `main`** diperbolehkan (branch protection tidak aktif).
+- Sebelum commit: `git pull --ff-only` lalu `git push origin main`.
+- CI (lint + test) berjalan otomatis pada push ke `main`; jangan push bila CI merah.
+- Commit message ringkas: `tipe(lingkup): ringkasan` (mis. `feat(fs-04): ...`).
+- Branch + PR opsional untuk perubahan besar/berisiko atau saat butuh review.
+
 ## Aturan Kontribusi
 
-- Jangan push langsung ke `main` (branch protection aktif). Gunakan branch + Pull Request.
 - Prioritaskan task berstatus **Tinggi** dan yang dekat checkpoint milestone.
-- Kontrak antar-path (format JSON katalog, payload RAG) disepakati dengan PIC Data Scientist & GenAI Engineer sebelum diubah.
+- Kontrak antar-path (format JSON katalog, payload RAG) disepakati dengan PIC Data Science & GenAI sebelum diubah — lihat [`docs/README.md`](docs/README.md).
