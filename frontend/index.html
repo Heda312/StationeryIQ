@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StationeryIQ — Asisten Toko Anugerah</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="logo" aria-hidden="true"></div>
+      <div class="brand">
+        <h1>StationeryIQ</h1>
+        <p>Asisten Retail Toko Anugerah</p>
+      </div>
+      <span id="status" class="status status--off" title="Status server">memeriksa…</span>
+    </header>
+
+    <div class="body">
+      <aside class="sidebar">
+        <h2>Kategori Produk</h2>
+        <ul id="kategori" class="chips"></ul>
+      </aside>
+
+      <main class="chat">
+        <h2 class="chat__title">Chat dengan StationeryIQ</h2>
+        <div id="messages" class="messages" aria-live="polite"></div>
+
+        <form id="chat-form" class="input-bar" autocomplete="off">
+          <input id="input" type="text" placeholder="Tulis pertanyaan soal stok, harga, atau seragam…"
+                 aria-label="Pertanyaan" required />
+          <button type="submit">Kirim</button>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

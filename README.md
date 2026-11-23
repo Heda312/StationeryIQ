@@ -51,12 +51,38 @@ Wireframe chat UI (non-teknis, warna utama **biru muda**):
 
 ```
 .
-├── README.md                       # Dokumen ini
-├── ROLE_FULLSTACK_DEVELOPER.md     # Konteks role & task FSD
+├── backend/                        # FastAPI (skeleton)
+│   ├── main.py                     # endpoint: health, stok, kategori, chat (mock)
+│   ├── test_api.py                 # cek cepat (pytest)
+│   └── requirements.txt
+├── frontend/                       # chat UI (skeleton, tanpa build step)
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
 ├── docs/
 │   └── design/                     # Aset desain (wireframe, mock)
+├── README.md
+├── ROLE_FULLSTACK_DEVELOPER.md     # Konteks role & task FSD
 └── Roadmap & Task Breakdown ...xlsx  # Roadmap & task tracker
 ```
+
+## Menjalankan (dev)
+
+Backend:
+```bash
+cd backend
+python -m venv .venv && .venv/Scripts/activate   # Windows; pakai bin/activate di Linux/macOS
+pip install -r requirements.txt
+uvicorn main:app --reload                        # http://127.0.0.1:8000
+pytest                                           # cek cepat
+```
+
+Frontend (skeleton statis): buka `frontend/index.html` di browser, atau jalankan server statis:
+```bash
+cd frontend
+python -m http.server 5500
+```
+`app.js` memanggil API di `http://127.0.0.1:8000` (ubah `API_BASE` bila perlu).
 
 ## Endpoint Minimum (rencana)
 
