@@ -2,7 +2,7 @@
 // Framework belum ditentukan di roadmap; dipilih HTML/CSS/JS tanpa build step.
 // Ganti ke framework pilihan tim saat ditetapkan.
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = (window.STATIONERYIQ_API || "http://127.0.0.1:8000").replace(/\/$/, "");
 
 const messages = document.getElementById("messages");
 const form = document.getElementById("chat-form");

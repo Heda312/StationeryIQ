@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: stationeryiq-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      # Nilai diisi di dashboard Render (sync: false = tidak ikut repo). Jangan commit rahasia.
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      # Origin frontend produksi (mis. https://stationeryiq.vercel.app)
+      - key: ALLOWED_ORIGINS
+        sync: false

@@ -5,6 +5,8 @@ Stok & kategori dibaca dari Supabase (fallback mock bila env kosong).
 Respons /chat masih stub; kontraknya disepakati dengan path GenAI.
 """
 
+import os
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -12,10 +14,12 @@ import db
 
 app = FastAPI(title="StationeryIQ API", version="0.0.1")
 
-# ponytail: origin longgar untuk dev; batasi ke URL frontend saat deploy
+# Origin diatur via env ALLOWED_ORIGINS (dipisah koma); default "*" untuk dev.
+_origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "*").split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_origins or ["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )

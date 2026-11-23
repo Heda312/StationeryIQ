@@ -56,16 +56,20 @@ Wireframe chat UI (non-teknis, warna utama **biru muda**):
 │   ├── db.py                       # akses Supabase (fallback mock)
 │   ├── test_api.py                 # cek cepat (pytest)
 │   ├── .env.example                # template env (salin -> .env)
+│   ├── Procfile / runtime.txt      # start command & versi Python (PaaS)
 │   ├── pyproject.toml              # config ruff
 │   └── requirements.txt
 ├── frontend/                       # chat UI (skeleton, tanpa build step)
 │   ├── index.html
 │   ├── styles.css
+│   ├── config.js                   # URL backend API (atur saat produksi)
 │   └── app.js
 ├── .github/workflows/ci.yml        # CI: lint + test
+├── render.yaml                     # blueprint deploy backend (contoh)
 ├── docs/
 │   ├── README.md                   # Ketergantungan antar peran
 │   ├── BOARD.md                    # Kanban interim
+│   ├── DEPLOY.md                   # Langkah deploy (PaaS + Vercel/cPanel)
 │   └── design/                     # Aset desain (wireframe, mock)
 ├── README.md
 ├── ROLE_FULLSTACK_DEVELOPER.md     # Konteks role & task FSD
@@ -95,7 +99,11 @@ Frontend (skeleton statis): buka `frontend/index.html` di browser, atau jalankan
 cd frontend
 python -m http.server 5500
 ```
-`app.js` memanggil API di `http://127.0.0.1:8000` (ubah `API_BASE` bila perlu).
+`app.js` memanggil API sesuai `frontend/config.js` (`window.STATIONERYIQ_API`, default `http://127.0.0.1:8000`).
+
+## Deploy
+
+Lihat [`docs/DEPLOY.md`](docs/DEPLOY.md): backend ke PaaS (contoh Render), frontend statis ke Vercel atau cPanel, database di Supabase.
 
 ## Endpoint Minimum (rencana)
 
