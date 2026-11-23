@@ -37,7 +37,7 @@
 - Database: relasional, **PostgreSQL atau SQLite** (skema dirancang path DS, FSD memakai ORM/DB client untuk terhubung).
 - Frontend: aplikasi web dengan chat UI. Framework **belum disebut** di roadmap.
 - Desain: wireframe di Figma atau mock UI, font **Montserrat & Roboto**.
-- Repo: GitHub dengan branch protection di `main`, project board (kanban), dan CI/CD dasar.
+- Repo: GitHub. **Commit langsung ke `main` diperbolehkan** (branch protection tidak aktif); branch + PR opsional untuk perubahan besar/berisiko. Project board (kanban) dan CI/CD dasar.
 - Endpoint minimum: chat, stok, kategori, health check.
 - Error handling standar (404, 500) dengan pesan yang rapi.
 - Respons RAG bisa streaming atau non-streaming. Payload harus disepakati dengan path GenAI.
@@ -104,7 +104,7 @@ Hal yang FSD harus sepakati atau sediakan, atau yang FSD terima dari path lain:
 2. **Periksa repo dan kode yang ada terlebih dahulu.** Jangan mengasumsikan framework frontend, hosting, atau pilihan database yang belum tertulis di sini. Tanyakan jika tidak jelas.
 3. Hormati kontrak antar path (bagian 6). Jika perlu mengubah format JSON atau payload yang dipakai path lain, sebutkan dampaknya dan sarankan koordinasi dengan PIC terkait.
 4. Utamakan kesederhanaan dan keandalan di atas fitur. Target utama adalah **live demo yang stabil pada 20 Des 2026**.
-5. Ikuti aturan Git tim: jangan push langsung ke `main` (branch protection aktif), gunakan branch dan PR.
+5. Ikuti aturan Git tim: **commit langsung ke `main` diperbolehkan** (branch protection tidak aktif). Sebelum push: `git pull --ff-only`. CI (lint + test) wajib hijau. Gunakan branch + PR untuk perubahan besar/berisiko atau saat butuh review.
 6. Prioritaskan task berstatus **Tinggi** dan yang dekat dengan checkpoint milestone.
 7. Beri tahu user jika permintaan menyentuh wilayah path DS atau GenAI.
 8. Gunakan Bahasa Indonesia saat berkomunikasi dengan user, kecuali diminta lain. Nama kode, komentar, dan commit mengikuti konvensi repo.
