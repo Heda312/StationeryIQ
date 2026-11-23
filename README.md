@@ -65,6 +65,7 @@ Wireframe chat UI (non-teknis, warna utama **biru muda**):
 ├── .github/workflows/ci.yml        # CI: lint + test
 ├── docs/
 │   ├── README.md                   # Ketergantungan antar peran
+│   ├── BOARD.md                    # Kanban interim
 │   └── design/                     # Aset desain (wireframe, mock)
 ├── README.md
 ├── ROLE_FULLSTACK_DEVELOPER.md     # Konteks role & task FSD
